@@ -35,6 +35,7 @@ uint8_t currentpulse = 0; // index for pulses we're storing
 void setup(void) {
   Serial.begin(9600);
   Serial.println("Ready to decode IR!");
+  pinMode(13, OUTPUT);
 }
  
 void loop(void) {
@@ -80,25 +81,29 @@ void loop(void) {
 }
  
 void printpulses(void) {
-  Serial.println("\n\r\n\rReceived: \n\rOFF \tON");
+//  Serial.println("\n\r\n\rReceived: \n\rOFF \tON");
   for (uint8_t i = 0; i < currentpulse; i++) {
-    Serial.print(pulses[i][0] * RESOLUTION, DEC);
-    Serial.print(" usec, ");
-    Serial.print(pulses[i][1] * RESOLUTION, DEC);
-    Serial.println(" usec");
+ //   Serial.print(pulses[i][0] * RESOLUTION, DEC);
+ //   Serial.print(" usec, ");
+ //   Serial.print(pulses[i][1] * RESOLUTION, DEC);
+ //   Serial.println(" usec");
+ 
   }
   
   // print it in a 'array' format
-  Serial.println("int IRsignal[] = {");
-  Serial.println("// ON, OFF (in 10's of microseconds)");
+  //Serial.println("int IRsignal[] = {");
+  //Serial.println("// ON, OFF (in 10's of microseconds)");
   for (uint8_t i = 0; i < currentpulse-1; i++) {
-    Serial.print("\t"); // tab
-    Serial.print(pulses[i][1] * RESOLUTION / 10, DEC);
-    Serial.print(", ");
-    Serial.print(pulses[i+1][0] * RESOLUTION / 10, DEC);
+  //  Serial.print("\t"); // tab
+  //  Serial.print(pulses[i][1] * RESOLUTION / 10, DEC);
+  //  Serial.print(", ");
+  //  Serial.print(pulses[i+1][0] * RESOLUTION / 10, DEC);
     Serial.println(",");
+  digitalWrite(13, HIGH);
+    delay(100);  
+      digitalWrite(13, LOW);  
   }
-  Serial.print("\t"); // tab
-  Serial.print(pulses[currentpulse-1][1] * RESOLUTION / 10, DEC);
-  Serial.print(", 0};");
+  //Serial.print("\t"); // tab
+  //Serial.print(pulses[currentpulse-1][1] * RESOLUTION / 10, DEC);
+  //Serial.print(", 0};");
 }
