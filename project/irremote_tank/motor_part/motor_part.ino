@@ -1,4 +1,4 @@
-int switchPin = 2; // switch input
+int switchPin = 12; // switch input
 int leftMotor1Pin1 = 3; // pin 2 on L293D
 int leftMotor1Pin2 = 4; // pin 7 on L293D
 int rightMotor1Pin1 = 5; // pin 2 on L293D
