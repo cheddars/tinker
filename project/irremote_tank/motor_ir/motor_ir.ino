@@ -24,6 +24,7 @@ void setup() {
 
     // set all the other pins you're using as outputs:
     pinMode(13, OUTPUT);
+        pinMode(11, OUTPUT); // ir vcc
     pinMode(leftMotor1Pin1, OUTPUT);
     pinMode(leftMotor1Pin2, OUTPUT);
     pinMode(rightMotor1Pin1, OUTPUT);
@@ -34,6 +35,7 @@ void setup() {
     // set enablePin high so that motor can turn on:
     digitalWrite(leftEnablePin, HIGH);
     digitalWrite(rightEnablePin, HIGH);
+    digitalWrite(11, HIGH); // ir vcc
     
     attachInterrupt(0, IR_remote, FALLING);
 }
